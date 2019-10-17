@@ -31,8 +31,9 @@ def handler(event, context):
 
     if short.lower() == 'linkedin':
         return {'statusCode': 303,
+                'body': None,
                 'headers': {
-                    'Location': 'https://www.linkedin.com/in/tammoheeren/'
+                    'Location': 'https://www.linkedin.com/in/tammoheeren/',
                 }
             }
 
