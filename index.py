@@ -30,7 +30,7 @@ def handler(event, context):
         return nothing_here_to_see()
 
     if short.lower() == 'linkedin':
-        return {'statusCode': 301,
+        return {'statusCode': 303,
                 'headers': {
                     'Location': 'https://www.linkedin.com/in/tammoheeren/'
                 }
