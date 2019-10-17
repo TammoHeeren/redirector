@@ -9,6 +9,22 @@ def nothing_here_to_see():
             }
 
 
+def redirect_to_here(target):
+    body = f'''<!DOCTYPE html>
+    <html>
+      <head>
+        <meta http-equiv="Refresh" content="7; url={target}" />
+      </head>
+      <body>
+        <p>Please follow <a href="{target}">this link</a>.</p>
+      </body>
+    </html>'''
+    return {'statusCode': 200,
+            'body': body,
+            'headers': {'Content-Type': 'text/html'},
+            }
+
+
 def handler(event, context):
 
     # if not event is given, just return
@@ -30,11 +46,7 @@ def handler(event, context):
         return nothing_here_to_see()
 
     if short.lower() == 'linkedin':
-        return {'statusCode': 303,
-                'body': None,
-                'headers': {
-                    'Location': 'https://www.linkedin.com/in/tammoheeren/',
-                }
-            }
+        target = 'https://www.linkedin.com/in/tammoheeren/'
+        return redirect_to_here(target)
 
     return nothing_here_to_see()

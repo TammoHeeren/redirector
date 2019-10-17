@@ -13,8 +13,7 @@ class TestHandlerCase(unittest.TestCase):
         result = index.handler({
             'pathParameters': {'short': 'linkedin'}
         }, None)
-        self.assertEqual(result['statusCode'], 303)
-        self.assertEqual(result['headers']['Location'], 'https://www.linkedin.com/in/tammoheeren/')
+        self.assertEqual(result['statusCode'], 200)
 
 
 if __name__ == '__main__':
