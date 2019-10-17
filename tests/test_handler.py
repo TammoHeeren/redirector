@@ -4,14 +4,17 @@ import index
 
 class TestHandlerCase(unittest.TestCase):
 
-    def test_response(self):
-        pass
-        # print("testing response.")
-        # result = index.handler(None, None)
-        # print(result)
-        # self.assertEqual(result['statusCode'], 200)
-        # self.assertEqual(result['headers']['Content-Type'], 'application/json')
-        # self.assertIn('Hello World', result['body'])
+    def test_with_empty_path(self):
+        result = index.handler(None, None)
+        self.assertEqual(result['statusCode'], 200)
+        self.assertEqual(result['headers']['Content-Type'], 'application/text')
+
+    def test_linkedin(self):
+        result = index.handler({
+            'pathParameters': {'short': 'linkedin'}
+        }, None)
+        self.assertEqual(result['statusCode'], 301)
+        self.assertEqual(result['headers']['Location'], 'https://www.linkedin.com/in/tammoheeren/')
 
 
 if __name__ == '__main__':
