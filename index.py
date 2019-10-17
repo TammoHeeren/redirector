@@ -5,7 +5,7 @@ import datetime
 def nothing_here_to_see():
     return {'statusCode': 200,
             'body': 'Nothing here to see',
-            'headers': {'Content-Type': 'application/text'},
+            'headers': {'Content-Type': 'application/html'},
             }
 
 
