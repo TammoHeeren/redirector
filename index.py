@@ -1,11 +1,6 @@
 import json
 import datetime
-
-TARGETS = {
-    'linkedin': 'https://www.linkedin.com/in/tammoheeren/',
-    'resume': 'https://docs.google.com/document/d/1o4CFp0deSyMi0qvI74HG3m5IY7uf7-bgYwvKEUpstQw/edit?usp=sharing',
-    'resume-orthalign': 'https://docs.google.com/document/d/1o8iaNSlimF1z0VQx5aAxsKxUXts0oBWvXd8fJV8rNfs/edit?usp=sharing',
-}
+import boto3
 
 
 def nothing_here_to_see():
@@ -42,8 +37,30 @@ def handler(event, context):
     if not short:
         return nothing_here_to_see()
 
-    if short.lower() in TARGETS:
-        target = TARGETS[short.lower()]
-        return redirect(target)
+    short = short.lower()
 
-    return nothing_here_to_see()
+    # Get the redirect link from dynamodb
+    dynamodb = boto3.resource(
+        'dynamodb',
+        region_name='us-west-2',
+    )
+
+    table = dynamodb.Table('tammo.us')
+
+    response = table.get_item(
+        Key={
+            'target': short
+        }
+    )
+
+    item = response.get('Item')
+
+    if not item:
+        return nothing_here_to_see()
+
+    target = item.get('link')
+
+    if not target:
+        return nothing_here_to_see()
+
+    return redirect(target)
