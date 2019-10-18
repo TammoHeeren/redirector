@@ -25,6 +25,13 @@ def redirect_to_here(target):
             }
 
 
+def redirect(target):
+    return {
+        'statusCode': 303,
+        'headers': {'Location': target}
+    }
+
+
 def handler(event, context):
 
     # if not event is given, just return
@@ -47,6 +54,6 @@ def handler(event, context):
 
     if short.lower() == 'linkedin':
         target = 'https://www.linkedin.com/in/tammoheeren/'
-        return redirect_to_here(target)
+        return redirect(target)
 
     return nothing_here_to_see()
