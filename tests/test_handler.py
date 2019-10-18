@@ -15,6 +15,12 @@ class TestHandlerCase(unittest.TestCase):
         }, None)
         self.assertEqual(result['statusCode'], 303)
 
+    def test_with_incorrect(self):
+        result = index.handler({
+            'pathParameters': {'short': 'test'}
+        }, None)
+        self.assertEqual(result['statusCode'], 200)
+
 
 if __name__ == '__main__':
     unittest.main()
