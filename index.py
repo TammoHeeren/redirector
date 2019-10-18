@@ -3,6 +3,8 @@ import datetime
 
 TARGETS = {
     'linkedin': 'https://www.linkedin.com/in/tammoheeren/',
+    'resume': 'https://docs.google.com/document/d/1o4CFp0deSyMi0qvI74HG3m5IY7uf7-bgYwvKEUpstQw/edit?usp=sharing',
+    'resume-orthalign': 'https://docs.google.com/document/d/1o8iaNSlimF1z0VQx5aAxsKxUXts0oBWvXd8fJV8rNfs/edit?usp=sharing',
 }
 
 
