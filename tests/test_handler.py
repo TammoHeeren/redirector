@@ -17,7 +17,7 @@ class TestHandlerCase(unittest.TestCase):
 
     def test_with_incorrect(self):
         result = index.handler({
-            'pathParameters': {'short': 'test'}
+            'pathParameters': {'short': '_____'}
         }, None)
         self.assertEqual(result['statusCode'], 200)
 
