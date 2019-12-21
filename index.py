@@ -1,6 +1,19 @@
-import json
-import datetime
 import boto3
+
+
+# Name of the able that stores the redirect information
+# Minimum fields are:
+# target: the stuff after you domain name
+# link: where the redirect is pointing towards
+#
+# Example:
+# https://tammo.us/example -> https://www.example.com
+# then
+# target = 'example'
+# link = 'https://www.example.com'
+
+table_name = 'tammo.us'
+region_name = 'us-west-2'
 
 
 def nothing_here_to_see():
@@ -42,10 +55,10 @@ def handler(event, context):
     # Get the redirect link from dynamodb
     dynamodb = boto3.resource(
         'dynamodb',
-        region_name='us-west-2',
+        region_name=region_name,
     )
 
-    table = dynamodb.Table('tammo.us')
+    table = dynamodb.Table(table_name)
 
     response = table.get_item(
         Key={
