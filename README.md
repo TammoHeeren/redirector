@@ -1,14 +1,3 @@
----
-name: Redirector
-tools: [python, aws, dynamodb, api]
-image: 
-description: >-
-  Redirector is a small utility writen in python that allows you to set up you own shortened links. It is set up
-  to run with AWS CodeStar and leverages Amazons Dynamodb database, and the API gateway.
-external_url: https://github.com/TammoHeeren/redirector
----
-
-
 Welcome to the AWS CodeStar sample web service
 ==============================================
 
